@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../jsProjects/AnimeAPI"
+		},
+		{
+			"path": "../../jsProjects/AnimePic_Generator/AnimeAPI"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CodedamnHTML"
+	}
+}

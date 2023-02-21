@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           background-color: #ccddff;
+        }
+        #heading{
+            font-size: 15px;
+            text-align: center;
+        }
+        #obj{
+            position: relative;
+            background-color: red;
+            width: 50px;
+            height: 20px;
+            display: none;
+        }
+        
+    </style>
+   
+</head>
+<body>
+    <div id="heading">
+        <h1>Test your reaction</h1>
+    </div>
+    <p>Click on the objects appear on sreen</p>
+    <div>
+        <button id="start">Start</button>
+        <p id="result">Your time : <span id="totalTime"></span></p>
+        <p>Best Score: <span id="best"> </span></p>
+    </div>
+    <div id="obj">
+
+    </div>  
+    <script>
+        var start;
+        var best;
+        document.getElementById("start").onclick=function(){
+            best =200;
+            setTimeout(makeShape,Math.random()*2000);
+        }
+        
+        document.getElementById("obj").onclick=function(){
+            document.getElementById("obj").style.display="none";
+            var end=Date.now();
+            var total=(end-start)/1000;
+           
+            if(best>total){
+                best=total;
+            }
+            document.getElementById("totalTime").innerHTML=total+"sec.";
+            document.getElementById("best").innerHTML=best+"sec.";
+            setTimeout(makeShape,Math.random()*2000);
+        }
+        function makeShape(){
+            start=Date.now();
+            var top=(Math.random()*150);
+            var left=(Math.random()*650);
+            var width=(Math.random()*150) +20;
+            var height=(Math.random()*150) +20;
+            if(Math.random()>0.5){
+                document.getElementById("obj").style.borderRadius="none";
+            }else{
+                document.getElementById("obj").style.borderRadius="50%";
+            }
+            document.getElementById("obj").style.top=top+"px";
+            document.getElementById("obj").style.left=left+"px";
+            document.getElementById("obj").style.width=width+"px";
+            document.getElementById("obj").style.height=height+"px";
+            document.getElementById("obj").style.backgroundColor=RandColor();
+            document.getElementById("obj").style.display="block";
+        }
+
+        function RandColor(){
+            var str ="0123456789abcdef".split('');
+            var color="#";
+            for(var i =0;i<6;i++){
+                color+= str[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+
+    </script>  
+</body>
+</html>
